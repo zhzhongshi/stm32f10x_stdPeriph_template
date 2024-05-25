@@ -2,6 +2,7 @@
 #include "stm32f10x.h"
 #include "stm32f10x_conf.h"
 #include "stm32f10x_gpio.h"
+#include "Delay.h"
 
 void GPIO_Configuration(void)
 {
@@ -20,6 +21,9 @@ int main() {
     GPIO_Configuration();
     while(1) {
         GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+        Delay_ms(500);
+        GPIO_SetBits(GPIOC, GPIO_Pin_13);
+        Delay_ms(500);
     }
     return 0;
 }

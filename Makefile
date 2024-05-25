@@ -17,14 +17,17 @@ Core/CMSIS/CM3/CoreSupport \
 Core/CMSIS/CM3/DeviceSupport/ST/STM32F10x \
 Driver/STM32F10x_StdPeriph_Driver \
 Driver/STM32F10x_StdPeriph_Driver/inc \
-User/inc
+User/inc \
+System
 
 SRC_FILES = \
 $(wildcard Core/CMSIS/CM3/**/*.c) \
 $(wildcard Core/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c) \
 $(wildcard Driver/STM32F10x_StdPeriph_Driver/*.c) \
 $(wildcard Driver/STM32F10x_StdPeriph_Driver/**/*.c) \
-$(wildcard User/**/*.c)
+$(wildcard User/**/*.c) \
+$(wildcard System/*.c) $(wildcard System/**/*.c)
+
 
 #####END MODIFY#####
 #####################################################################
@@ -104,7 +107,7 @@ $(BUILD_DIR):
 
 #####FLASH#####
 flash: $(BUILD_DIR)/$(PROJECT).hex
-	openocd -f target/STM32F1x.cfg -f interface/stlink.cfg -c "program $(BUILD_DIR)/$(PROJECT).hex verify reset exit"
+	openocd -f interface/stlink.cfg -f target/stm32f1x.cfg -c "program $(BUILD_DIR)/$(PROJECT).hex verify reset exit"
 #####CLEAN#####
 clean:
 	rm -fR $(BUILD_DIR) $(OBJ_DIR)
