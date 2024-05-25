@@ -1,29 +1,30 @@
 PROJECT = LEDBlink
-# MCU
+
 MCU = cortex-m3
 DBG = -g3
-# Optimisation level
 OPT = #-Os
 
 #####BEGIN MODIFY#####
-# Linker script file
 LINKER = stm32f1x_64KB_flash.ld
-# Startup assembly source file
 STARTUP = startup_stm32f10x_md.s
-# C definations
+
 DEFINES = \
 STM32F10X_MD \
 USE_STDPERIPH_DRIVER
 
-# Include directories
 INCDIR = \
-inc \
-Driver/inc
+Core/CMSIS/CM3/CoreSupport \
+Core/CMSIS/CM3/DeviceSupport/ST/STM32F10x \
+Driver/STM32F10x_StdPeriph_Driver \
+Driver/STM32F10x_StdPeriph_Driver/inc \
+User/inc
 
-
-# Add all source files from src/ directory
-SRC_FILES = $(wildcard Driver/src/*.c) \
-$(wildcard src/*.c)
+SRC_FILES = \
+$(wildcard Core/CMSIS/CM3/**/*.c) \
+$(wildcard Core/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c) \
+$(wildcard Driver/STM32F10x_StdPeriph_Driver/*.c) \
+$(wildcard Driver/STM32F10x_StdPeriph_Driver/**/*.c) \
+$(wildcard User/**/*.c)
 
 #####END MODIFY#####
 #####################################################################
