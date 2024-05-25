@@ -13,11 +13,11 @@ STARTUP = startup_stm32f10x_md.s
 # C definations
 DEFINES = \
 STM32F10X_MD \
-STM32F103xB \
 USE_STDPERIPH_DRIVER
 
 # Include directories
-INCDIR = inc \
+INCDIR = \
+inc \
 Driver/inc
 
 
@@ -101,9 +101,9 @@ $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
 	mkdir $(OBJ_DIR)
 
-
+#####FLASH#####
 flash: $(BUILD_DIR)/$(PROJECT).hex
 	openocd -f target/STM32F1x.cfg -f interface/stlink.cfg -c "program $(BUILD_DIR)/$(PROJECT).hex verify reset exit"
-
+#####CLEAN#####
 clean:
 	rm -fR $(BUILD_DIR) $(OBJ_DIR)
