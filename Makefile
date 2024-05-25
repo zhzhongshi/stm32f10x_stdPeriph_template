@@ -98,8 +98,8 @@ $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf
 	$(BIN) $< $@
 
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
-	mkdir -p $(OBJ_DIR)
+	mkdir $(BUILD_DIR)
+	mkdir $(OBJ_DIR)
 
 
 flash: $(BUILD_DIR)/$(PROJECT).hex
