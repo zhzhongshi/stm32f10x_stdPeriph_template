@@ -10,7 +10,7 @@ OPT = #-Os
 # 链接文件
 LINKER = stm32f1x_64KB_flash.ld
 # 启动汇编文件
-STARTUP = startup_stm32f10x_md.s
+STARTUP = Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_md.s
 # 宏定义
 DEFINES = \
 STM32F10X_MD \
@@ -18,24 +18,20 @@ USE_STDPERIPH_DRIVER
 
 # 包含目录
 INCLUDE_DIR = \
-Core/CMSIS/CM3/CoreSupport \
-Core/CMSIS/CM3/DeviceSupport/ST/STM32F10x \
-Driver/STM32F10x_StdPeriph_Driver \
-Driver/STM32F10x_StdPeriph_Driver/inc \
-User/inc \
+Libraries/CMSIS/CM3/CoreSupport \
+Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x \
+Libraries/STM32F10x_StdPeriph_Driver/inc \
 $(wildcard System/*) \
-$(wildcard Hardware/*)
+User
 
-# 源文件 使用$(wildcard *)作为通配符
+# 使用$(wildcard *)作为通配符
 
 SRC_FILES = \
-$(wildcard Core/CMSIS/CM3/**/*.c) \
-$(wildcard Core/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c) \
-$(wildcard Driver/STM32F10x_StdPeriph_Driver/*.c) \
-$(wildcard Driver/STM32F10x_StdPeriph_Driver/**/*.c) \
-$(wildcard User/**/*.c) \
-$(wildcard System/*.c) $(wildcard System/**/*.c) \
-$(wildcard Hardware/**/*.c)
+$(wildcard Libraries/CMSIS/CM3/CoreSupport/*.c) \
+$(wildcard Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c) \
+$(wildcard Libraries/STM32F10x_StdPeriph_Driver/src/*.c) \
+$(wildcard System/**/*.c) \
+$(wildcard User/*.c)
 
 #####END MODIFY#####
 
