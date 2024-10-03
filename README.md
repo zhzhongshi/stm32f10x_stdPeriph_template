@@ -210,4 +210,4 @@ make
 make flash
 ```
 调试
-在vscode中打开项目，点击调试按钮，选择Cortex Debug，点击启动按钮，即可开始调试
+在vscode中打开项目，点击调试按钮，选择Cortex Debug，点击启动按钮，即可开始调试。
